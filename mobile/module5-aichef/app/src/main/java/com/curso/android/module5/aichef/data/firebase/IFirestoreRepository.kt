@@ -57,4 +57,5 @@ interface IFirestoreRepository {
      * @return Result indicando éxito o error
      */
     suspend fun updateGeneratedImageUrl(recipeId: String, imageUrl: String): Result<Unit>
+    suspend fun toggleFavorite(recipeId: String, currentValue: Boolean): Result<Unit>
 }

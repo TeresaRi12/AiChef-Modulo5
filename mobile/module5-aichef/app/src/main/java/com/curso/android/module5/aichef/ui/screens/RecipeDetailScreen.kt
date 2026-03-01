@@ -44,6 +44,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.curso.android.module5.aichef.domain.model.UiState
 import com.curso.android.module5.aichef.ui.viewmodel.ChefViewModel
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 
 /**
  * =============================================================================
@@ -171,6 +173,24 @@ fun RecipeDetailScreen(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Volver"
                         )
+                    }
+                },
+
+                actions = {
+                    recipe?.let {
+                        IconButton(
+                            onClick = {
+                                viewModel.toggleFavorite(it)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = if (it.isFavorite)
+                                    Icons.Default.Favorite
+                                else
+                                    Icons.Default.FavoriteBorder,
+                                contentDescription = "Favorite"
+                            )
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

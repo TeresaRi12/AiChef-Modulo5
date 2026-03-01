@@ -284,6 +284,17 @@ class ChefViewModel @Inject constructor(
             firestoreRepository.deleteRecipe(recipeId)
         }
     }
+    //MMM
+    fun toggleFavorite(recipe: Recipe) {
+        viewModelScope.launch {
+            firestoreRepository.toggleFavorite(
+                recipeId = recipe.id,
+                currentValue = recipe.isFavorite
+            )
+        }
+    }
+
+
 
     // =========================================================================
     // ACCIONES DE GENERACIÓN DE IMÁGENES CON CACHE
