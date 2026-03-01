@@ -1,44 +1,52 @@
 ## María Teresa Rivera López
 ## 24000579
 
-Lab0 Parte1-Parte2
-## Parte 1 – Creación de Spots con Cámara y GPS
-- Captura de foto con CameraX:
-  Uso de ImageCapture para tomar fotografías.
-  Almacenamiento de la imagen en almacenamiento interno.
-  Manejo granular de errores de cámara (CameraClosed, HardwareIssue, etc.).
+Lab06 Parte1-Parte2
+La aplicación AI Chef es una app Android que utiliza inteligencia artificial para generar recetas de cocina de manera automática
+a partir de ingredientes ingresados por el usuario. La aplicación muestra esta información en una interfaz desarrollada con 
+Jetpack Compose, manejando estados de carga y posibles errores de conexión.
 
-- Obtención de ubicación GPS:
-  Uso de Location Services.
-  Fallback a última ubicación conocida si no hay ubicación fresca.
-  Validación de coordenadas antes de guardar.
+Además, la app permite compartir la receta como imagen, para ello:
+Convierte el contenido visual de la receta en un archivo de imagen (Bitmap).
+Guarda la imagen temporalmente en el almacenamiento interno.
+Utiliza un FileProvider para generar una URI segura.
 
-- Manejo granular de errores:
-  Uso de sealed classes para representar errores controlados.
-  Conversión de excepciones en resultados de negocio (CreateSpotResult).
-  Limpieza automática de archivos si ocurre un error.
+## Parte 1 – Recipe Favorites
+- Configuración del proyecto con Firebase:
+- Integración del proyecto Android con Firebase.
+- Agregado del archivo google-services.json.
+- Configuración de dependencias en Gradle.
 
-- Persistencia con Room:
-  Almacenamiento local de Spots.
+Integración con Firebase AI Logic:
+- Envío de prompt dinámico con ingredientes ingresados por el usuario.
+  Recepción de respuesta estructurada desde la IA.
+  Generación automática de:
+  - Título de receta
+  - Lista de ingredientes
+  - Instrucciones
+  - Imagen generada
 
-
-## Parte 2 – liminación de Spots con Limpieza
-- Eliminación coordinada :
-  Borrado del registro en Room.
-  Eliminación del archivo de imagen asociado en almacenamiento interno.
-  Prevención de archivos huérfanos.
-
-- Reactividad automática:
-  Uso de Flow<List<SpotEntity>>.
-  El mapa se actualiza automáticamente al eliminar un Spot.
-  No se requiere refrescar manualmente.
-
-- Manejo de casos límite:
-  Eliminación segura si el archivo no existe.
-  Prevención de inconsistencias entre base de datos y almacenamiento.
-
-Link del video: https://youtu.be/Cm5t5fOx54E
+Carga de imagen generada:
+Uso de Coil para renderizar la imagen retornada por la IA.
+Manejo seguro de errores al cargar imágenes.
+Uso de clases de datos para modelar la receta.
 
 
-Con ayuda de IA pude agilizar parte del proyecto y la documentacion, asi como comprender mejor el funcionamiento de Android, 
-al igual que su estructura al hacer una app y en que carpetas colocarlas.
+## Parte 2 – Recipe Sharing
+- Conversión de Composable a Bitmap
+- Implementación de ShareUtils:
+  Creación del archivo util/ShareUtils.kt.
+
+- Configuración de FileProvider:
+  Declaración en AndroidManifest.xml.
+  Creación del archivo res/xml/file_paths.xml.
+  Generación de URI segura para compartir archivos.
+
+
+Link del video: https://youtu.be/wr11pOG8-m4
+
+El documento que genero Firestore en donde de encuentra la API key no fue commiteado.
+
+
+Con ayuda de IA pude agilizar parte del proyecto y la documentacion, asi como comprender mejor el funcionamiento de Android, el funcionamiento 
+y aplicacion de las API key para el laboratorio al igual que su estructura al hacer una app y en que carpetas colocarlas.
